@@ -144,11 +144,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Suman\\source\\repos\\WebCam\\WebCam\\WebCam.csproj",
+      "projectUniqueName": "F:\\Git\\suman\\WebCam\\WebCam\\WebCam.csproj",
       "projectName": "WebCam",
-      "projectPath": "C:\\Users\\Suman\\source\\repos\\WebCam\\WebCam\\WebCam.csproj",
+      "projectPath": "F:\\Git\\suman\\WebCam\\WebCam\\WebCam.csproj",
       "packagesPath": "C:\\Users\\Suman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Suman\\source\\repos\\WebCam\\WebCam\\obj\\",
+      "outputPath": "F:\\Git\\suman\\WebCam\\WebCam\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

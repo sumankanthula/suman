@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace WebCam
     {
         FilterInfoCollection filterInfoCollection;
         VideoCaptureDevice videoCaptureDevice;
+        bool IsMirrorEnabled = false;
         public webCamForm()
         {
             InitializeComponent();
@@ -18,6 +20,13 @@ namespace WebCam
 
         private void webCamForm_Load(object sender, EventArgs e)
         {
+            //System.Windows.Forms.Form.WindowState = FormWindowState.Maximized;
+
+            var frmWidth = webCamForm.ActiveForm.Width;
+            var frmHeight = webCamForm.ActiveForm.Height;
+            pbCamera.Width = frmWidth - 50;
+            pbCamera.Height = frmHeight - 50;
+
             ReloadNewDevices();
             LoadDefaultImage();
         }
@@ -50,8 +59,15 @@ namespace WebCam
         private void VideoCaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
             var bitmap = (Bitmap)eventArgs.Frame.Clone();
-            var filter = new Mirror(false, true);
-            filter.ApplyInPlace(bitmap);
+            if (IsMirrorEnabled)
+            {
+                var filter = new Mirror(false, true);
+                filter.ApplyInPlace(bitmap);
+            }
+            else
+            {
+                btnMirror.Name = "Mirror Disabled";
+            }
             pbCamera.Image = bitmap;
         }
 
@@ -81,12 +97,33 @@ namespace WebCam
 
         private void LoadDefaultImage()
         {
-            var bitMap = new Bitmap(@"C:\Users\Suman\source\repos\WebCam\WebCam\camera_btn.jpg");
+            var test = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "camera_btn.jpg");
+
+            var bitMap = new Bitmap(test);
             pbCamera.Image = bitMap;
         }
         private void Reload_Click(object sender, EventArgs e)
         {
             ReloadNewDevices();
+        }
+
+        private void btnMirror_Click(object sender, EventArgs e)
+        {
+            if (!IsMirrorEnabled)
+            {
+                IsMirrorEnabled = true;
+                btnMirror.Name = "Mirror Enabled";
+            }
+            else
+            {
+                IsMirrorEnabled = true;
+                btnMirror.Name = "Mirror Disabled";
+            }
+        }
+
+        private void webCamForm_MaximumSizeChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

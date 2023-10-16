@@ -1,0 +1,7 @@
+/packages/
+/node_modules/
+*/.vs/
+*.vs\*
+*/bin/
+*/obj/
+

@@ -35,6 +35,7 @@ namespace WebCam
             this.btnCameraStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.Reload = new System.Windows.Forms.Button();
+            this.btnMirror = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,11 +95,22 @@ namespace WebCam
             this.Reload.UseVisualStyleBackColor = true;
             this.Reload.Click += new System.EventHandler(this.Reload_Click);
             // 
+            // btnMirror
+            // 
+            this.btnMirror.Location = new System.Drawing.Point(146, 466);
+            this.btnMirror.Name = "btnMirror";
+            this.btnMirror.Size = new System.Drawing.Size(94, 29);
+            this.btnMirror.TabIndex = 6;
+            this.btnMirror.Text = "Mirror";
+            this.btnMirror.UseVisualStyleBackColor = true;
+            this.btnMirror.Click += new System.EventHandler(this.btnMirror_Click);
+            // 
             // webCamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 615);
+            this.Controls.Add(this.btnMirror);
             this.Controls.Add(this.Reload);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnCameraStart);
@@ -107,6 +119,8 @@ namespace WebCam
             this.Controls.Add(this.cmbCamera);
             this.Name = "webCamForm";
             this.Text = "Web Cam";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.MaximumSizeChanged += new System.EventHandler(this.webCamForm_MaximumSizeChanged);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.webCamForm_FormClosing);
             this.Load += new System.EventHandler(this.webCamForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbCamera)).EndInit();
@@ -123,6 +137,7 @@ namespace WebCam
         private System.Windows.Forms.Button btnCameraStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button Reload;
+        private System.Windows.Forms.Button btnMirror;
     }
 }
 
